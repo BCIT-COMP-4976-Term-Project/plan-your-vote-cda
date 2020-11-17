@@ -36,10 +36,13 @@ class App extends Component {
     themeHref: ''
   };
 
+
   componentDidMount() {
     this.loadApiData().then(() => {
       this.setTheme();
     });
+    console.log(this.state.images[0].placement)
+    console.log(this.state.images[1].placement)
   }
 
   loadApiData = async () => {
@@ -48,7 +51,7 @@ class App extends Component {
       .then(result => {
         this.setState({
           themeName: result.SelectedTheme.ThemeName,
-          images: result.images
+          images: result.Images
         });
       });
   };
@@ -65,6 +68,7 @@ class App extends Component {
         this.setState({ themeHref: `${themes.BASE}${themes.DEFAULT}` });
         break;
     }
+    console.log("images", this.state.images);
   };
 
   render() {
