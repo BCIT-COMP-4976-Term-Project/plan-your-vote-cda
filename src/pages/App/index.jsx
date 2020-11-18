@@ -41,8 +41,6 @@ class App extends Component {
     this.loadApiData().then(() => {
       this.setTheme();
     });
-    console.log(this.state.images[0].placement)
-    console.log(this.state.images[1].placement)
   }
 
   loadApiData = async () => {
@@ -68,7 +66,6 @@ class App extends Component {
         this.setState({ themeHref: `${themes.BASE}${themes.DEFAULT}` });
         break;
     }
-    console.log("images", this.state.images);
   };
 
   render() {
