@@ -36,7 +36,6 @@ class App extends Component {
     themeHref: ''
   };
 
-
   componentDidMount() {
     this.loadApiData().then(() => {
       this.setTheme();
