@@ -56,9 +56,9 @@ class Home extends Component {
   introTips = () => {
     return (
       <ul className='intro-tips'>
-        {introTipsDummy.map(tip => {
+        {introTipsDummy.map((tip, index) => {
           return (
-            <li>
+            <li key={index}>
               <span>{tip.order}</span>
               {tip.content}
             </li>
