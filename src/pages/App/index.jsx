@@ -18,7 +18,7 @@ class App extends Component {
     images: [
       {
         id: '',
-        placement: 'Logo',
+        Placement: 'Logo',
         type: '',
         value: '',
         description: '',
@@ -26,7 +26,7 @@ class App extends Component {
       },
       {
         id: '',
-        placement: 'Footer Logo',
+        Placement: 'Footer Logo',
         type: '',
         value: '',
         description: '',
@@ -77,7 +77,7 @@ class App extends Component {
         <Router>
           <Navigation
             logo={this.state.images.find(image => {
-              return image.placement === 'Logo';
+              return image.Placement === 'Logo';
             })}
           />
           <Switch>
@@ -87,7 +87,7 @@ class App extends Component {
           </Switch>
           <Footer
             logo={this.state.images.find(image => {
-              return image.placement === 'Footer Logo';
+              return image.Placement === 'Footer Logo';
             })}
           />
         </Router>
