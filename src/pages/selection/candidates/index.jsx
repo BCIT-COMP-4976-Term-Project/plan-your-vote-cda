@@ -116,7 +116,7 @@ class Candidates extends Component {
       return null;
     }
 
-    return race.candidates.map(candidate => {
+    return race.Candidates.map(candidate => {
       if (!candidate) {
         return null;
       }
@@ -134,7 +134,7 @@ class Candidates extends Component {
   renderModal = () => {
     const { selectedCandidates } = this.state;
     return this.state.races.map(race => {
-      return race.candidates.map(candidate => {
+      return race.Candidates.map(candidate => {
         return (
           <CandidateModal
             key={candidate.candidateId}
