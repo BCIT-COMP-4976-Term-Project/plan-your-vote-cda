@@ -9,7 +9,7 @@ const CandidateModal = ({
 }) => {
   const getDesiredDetail = key => {
     let desiredDetail;
-    candidate.details.map(detail => {
+    candidate.Details.map(detail => {
       if (detail.title === key) {
         desiredDetail = detail;
       }
@@ -39,7 +39,7 @@ const CandidateModal = ({
   const displayContact = contactMethodList.map(cmItem => {
     let contactMethod = ``;
     let key = `${cmItem}`;
-    const found = candidate.contacts.find(
+    const found = candidate.Contacts.find(
       contact => contact.contactMethod === cmItem
     );
     if (found) {
