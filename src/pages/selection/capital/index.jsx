@@ -83,14 +83,15 @@ class Capital extends Component {
   };
 
   render() {
+    console.log("test ============ :",this.state.ballotIssues)
     const mcQ = this.state.ballotIssues.map(mcQuestions => {
       return (
         <MultipleChoiceQuestion
-          key={mcQuestions.ballotIssueId}
-          title={mcQuestions.ballotIssueTitle}
+          key={mcQuestions.BallotIssueId}
+          title={mcQuestions.BallotIssueTitle}
           description={mcQuestions.description}
-          name={mcQuestions.ballotIssueId}
-          values={mcQuestions.ballotIssueOptions}
+          name={mcQuestions.BallotIssueId}
+          values={mcQuestions.BallotIssueOptions}
           radioFunction={this.radioBtn}
         />
       );
