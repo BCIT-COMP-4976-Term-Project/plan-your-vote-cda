@@ -19,7 +19,7 @@ class Candidates extends Component {
     },
     selectedCandidates: [],
     currentCard: {
-      candidateId: '',
+      CandidateId: '',
       name: '',
       picture: '',
       contacts: [
@@ -71,14 +71,14 @@ class Candidates extends Component {
     const { selectedCandidates } = this.state;
     const newCandidates = selectedCandidates.slice(0);
     const found = selectedCandidates.findIndex(
-      cand => cand.candidateId === candidate.candidateId
+      cand => cand.CandidateId === candidate.CandidateId
     );
 
     if (found > -1) {
       newCandidates.splice(found, 1);
     } else {
       const temp = {
-        candidateId: candidate.candidateId,
+        CandidateId: candidate.CandidateId,
         name: candidate.name,
         picture: candidate.picture,
         candidatePosition: position,
@@ -123,7 +123,7 @@ class Candidates extends Component {
 
       return (
         <CandidateCard
-          key={candidate.candidateId}
+          key={candidate.CandidateId}
           candidate={candidate}
           displayModal={this.displayModal}
         />
@@ -137,7 +137,7 @@ class Candidates extends Component {
       return race.Candidates.map(candidate => {
         return (
           <CandidateModal
-            key={candidate.candidateId}
+            key={candidate.CandidateId}
             position={race.positionName}
             candidate={candidate}
             selectFunction={this.selectBtn}
