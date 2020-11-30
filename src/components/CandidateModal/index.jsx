@@ -10,7 +10,7 @@ const CandidateModal = ({
   const getDesiredDetail = key => {
     let desiredDetail;
     candidate.Details.map(detail => {
-      if (detail.title === key) {
+      if (detail.Title === key) {
         desiredDetail = detail;
       }
       return null;
@@ -22,7 +22,7 @@ const CandidateModal = ({
     if (!priority) {
       return null;
     }
-    return priority.text;
+    return priority.Text;
   };
 
   const contactMethodList = [
@@ -40,11 +40,11 @@ const CandidateModal = ({
     let contactMethod = ``;
     let key = `${cmItem}`;
     const found = candidate.Contacts.find(
-      contact => contact.contactMethod === cmItem
+      contact => contact.ContactMethod === cmItem
     );
     if (found) {
-      if (found.contactMethod === 'Instagram') {
-        let splitURL = found.contactValue.split('/');
+      if (found.ContactMethod === 'Instagram') {
+        let splitURL = found.ContactValue.split('/');
         let contactHandle = splitURL[splitURL.length - 1];
 
         if (contactHandle === '?hl=en' || contactHandle === '') {
@@ -52,28 +52,28 @@ const CandidateModal = ({
         }
 
         contactMethod += `@${contactHandle}`;
-        contactMethod = <a href={found.contactValue}> {contactMethod}</a>;
+        contactMethod = <a href={found.ContactValue}> {contactMethod}</a>;
       }
 
-      if (found.contactMethod === 'Twitter') {
-        let splitURL = found.contactValue.split('/');
+      if (found.ContactMethod === 'Twitter') {
+        let splitURL = found.ContactValue.split('/');
         let contactHandle = splitURL[splitURL.length - 1];
         contactMethod += `@${contactHandle}`;
-        contactMethod = <a href={found.contactValue}> {contactMethod}</a>;
+        contactMethod = <a href={found.ContactValue}> {contactMethod}</a>;
       }
 
       if (found.contactMethod === 'Email') {
-        contactMethod += found.contactValue;
+        contactMethod += found.ContactValue;
         contactMethod = (
           <a href={`mailto: ${contactMethod}`}> {contactMethod}</a>
         );
       }
 
       if (
-        found.contactMethod === 'Website' ||
-        found.contactMethod === 'Facebook' ||
-        found.contactMethod === 'Youtube' ||
-        found.contactMethod === 'Other'
+        found.ContactMethod === 'Website' ||
+        found.ContactMethod === 'Facebook' ||
+        found.ContactMethod === 'Youtube' ||
+        found.ContactMethod === 'Other'
       ) {
         contactMethod += found.contactValue;
         let splitURL = contactMethod.split('');
@@ -89,8 +89,8 @@ const CandidateModal = ({
         contactMethod = <a href={contactMethod}> {contactMethod}</a>;
       }
 
-      if (found.contactMethod === 'Phone') {
-        contactMethod += found.contactValue;
+      if (found.ContactMethod === 'Phone') {
+        contactMethod += found.ContactValue;
       }
     } else {
       contactMethod += 'Not Provided';
@@ -109,7 +109,7 @@ const CandidateModal = ({
       id={`candidate-${candidate.candidateId}-modal`}
       tabIndex='-1'
       role='dialog'
-      aria-labelledby={`candidate-${candidate.candidateId}-modal-label`}
+      aria-labelledby={`candidate-${candidate.CandidateId}-modal-label`}
       aria-hidden='true'
     >
       <div
@@ -121,12 +121,12 @@ const CandidateModal = ({
             <div className='modal-header'>
               <h3
                 className='modal-title'
-                id={`candidate-${candidate.candidateId}-modal-label`}
+                id={`candidate-${candidate.CandidateId}-modal-label`}
               >
                 {candidate.name}
                 <br />
                 <span className='card-subtitle mb-2 text-muted'>
-                  {candidate.organizationName}
+                  {candidate.OrganizationName}
                 </span>
               </h3>
               <button
@@ -142,7 +142,7 @@ const CandidateModal = ({
           <div className='modal-body'>
             <div className='nonScroll'>
               <img
-                src={`${CMS_BASE_URL}/${candidate.picture}`}
+                src={`${CMS_BASE_URL}/${candidate.Picture}`}
                 className='card-img-top'
                 alt={candidate.name}
               />
@@ -154,7 +154,7 @@ const CandidateModal = ({
                 {selectedCandidates.length === 0
                   ? 'ADD'
                   : selectedCandidates.findIndex(
-                      cand => cand.candidateId === candidate.candidateId
+                      cand => cand.CandidateId === candidate.CandidateId
                     ) >= 0
                   ? 'REMOVE'
                   : 'ADD'}

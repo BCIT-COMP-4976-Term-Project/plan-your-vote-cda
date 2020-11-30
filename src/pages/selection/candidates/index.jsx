@@ -20,19 +20,19 @@ class Candidates extends Component {
     selectedCandidates: [],
     currentCard: {
       CandidateId: '',
-      name: '',
-      picture: '',
-      contacts: [
+      Name: '',
+      Picture: '',
+      Contacts: [
         {
-          contactMethod: '',
-          contactValue: ''
+          ContactMethod: '',
+          ContactValue: ''
         }
       ],
-      details: [
+      Details: [
         {
-          title: '',
-          text: '',
-          format: ''
+          Title: '',
+          Text: '',
+          Format: ''
         }
       ]
     },
@@ -43,13 +43,13 @@ class Candidates extends Component {
     this._isMounted = true;
     this.loadCandidatesApi().then(response => {
       if (this._isMounted) {
-        const { stepTitle, stepDescription, stepNumber } = response.step;
+        const { StepTitle, StepDescription, StepNumber } = response.step;
         this.setState({
           races: response.races.races,
           candidatesHeader: {
-            stepTitle,
-            stepDescription,
-            stepNumber
+            StepTitle,
+            StepDescription,
+            StepNumber
           }
         });
       }
@@ -79,12 +79,12 @@ class Candidates extends Component {
     } else {
       const temp = {
         CandidateId: candidate.CandidateId,
-        name: candidate.name,
-        picture: candidate.picture,
-        candidatePosition: position,
-        details: candidate.details,
-        organizationName: candidate.organizationName,
-        contacts: candidate.contacts
+        Name: candidate.Name,
+        Picture: candidate.Picture,
+        CandidatePosition: position,
+        Details: candidate.Details,
+        OrganizationName: candidate.OrganizationName,
+        Contacts: candidate.Contacts
       };
 
       newCandidates.push(temp);
@@ -110,6 +110,7 @@ class Candidates extends Component {
       console.error('unable to set state');
     }
   };
+
 
   renderCandidates = race => {
     if (!race) {
@@ -138,7 +139,7 @@ class Candidates extends Component {
         return (
           <CandidateModal
             key={candidate.CandidateId}
-            position={race.positionName}
+            position={race.PositionName}
             candidate={candidate}
             selectFunction={this.selectBtn}
             selectedCandidates={selectedCandidates}
