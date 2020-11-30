@@ -19,20 +19,20 @@ class Candidates extends Component {
     },
     selectedCandidates: [],
     currentCard: {
-      candidateId: '',
-      name: '',
-      picture: '',
-      contacts: [
+      CandidateId: '',
+      Name: '',
+      Picture: '',
+      Contacts: [
         {
-          contactMethod: '',
-          contactValue: ''
+          ContactMethod: '',
+          ContactValue: ''
         }
       ],
-      details: [
+      Details: [
         {
-          title: '',
-          text: '',
-          format: ''
+          Title: '',
+          Text: '',
+          Format: ''
         }
       ]
     },
@@ -43,13 +43,13 @@ class Candidates extends Component {
     this._isMounted = true;
     this.loadCandidatesApi().then(response => {
       if (this._isMounted) {
-        const { StepTitle, StepDescription, stepNumber } = response.step;
+        const { StepTitle, StepDescription, StepNumber } = response.step;
         this.setState({
           races: response.races.races,
           candidatesHeader: {
             StepTitle,
             StepDescription,
-            stepNumber
+            StepNumber
           }
         });
       }
@@ -71,20 +71,20 @@ class Candidates extends Component {
     const { selectedCandidates } = this.state;
     const newCandidates = selectedCandidates.slice(0);
     const found = selectedCandidates.findIndex(
-      cand => cand.candidateId === candidate.candidateId
+      cand => cand.CandidateId === candidate.CandidateId
     );
 
     if (found > -1) {
       newCandidates.splice(found, 1);
     } else {
       const temp = {
-        candidateId: candidate.candidateId,
-        name: candidate.name,
-        picture: candidate.picture,
-        candidatePosition: position,
-        details: candidate.details,
-        organizationName: candidate.organizationName,
-        contacts: candidate.contacts
+        CandidateId: candidate.CandidateId,
+        Name: candidate.Name,
+        Picture: candidate.Picture,
+        CandidatePosition: position,
+        Details: candidate.Details,
+        OrganizationName: candidate.OrganizationName,
+        Contacts: candidate.Contacts
       };
 
       newCandidates.push(temp);
@@ -111,6 +111,7 @@ class Candidates extends Component {
     }
   };
 
+
   renderCandidates = race => {
     if (!race) {
       return null;
@@ -123,7 +124,7 @@ class Candidates extends Component {
 
       return (
         <CandidateCard
-          key={candidate.candidateId}
+          key={candidate.CandidateId}
           candidate={candidate}
           displayModal={this.displayModal}
         />
@@ -137,7 +138,7 @@ class Candidates extends Component {
       return race.Candidates.map(candidate => {
         return (
           <CandidateModal
-            key={candidate.candidateId}
+            key={candidate.CandidateId}
             position={race.PositionName}
             candidate={candidate}
             selectFunction={this.selectBtn}
