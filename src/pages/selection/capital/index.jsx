@@ -83,14 +83,15 @@ class Capital extends Component {
   };
 
   render() {
-    const mcQ = this.state.ballotIssues.map(mcQuestions => {
+
+    const mcQ = this.state.ballotIssues.reverse().map(mcQuestions => {
       return (
         <MultipleChoiceQuestion
-          key={mcQuestions.ballotIssueId}
-          title={mcQuestions.ballotIssueTitle}
+          key={mcQuestions.BallotIssueId}
+          title={mcQuestions.BallotIssueTitle}
           description={mcQuestions.description}
-          name={mcQuestions.ballotIssueId}
-          values={mcQuestions.ballotIssueOptions}
+          name={mcQuestions.BallotIssueId}
+          values={mcQuestions.BallotIssueOptions}
           radioFunction={this.radioBtn}
         />
       );
