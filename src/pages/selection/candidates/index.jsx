@@ -14,8 +14,8 @@ class Candidates extends Component {
   state = {
     races: [],
     candidatesHeader: {
-      StepTitle: '',
-      StepDescription: ''
+      stepTitle: '',
+      stepDescription: ''
     },
     selectedCandidates: [],
     currentCard: {
@@ -207,23 +207,23 @@ class Candidates extends Component {
 
     const positions = [];
     this.state.races.forEach(race => {
-      positions.push(race.PositionName);
+      positions.push(race.positionName);
     });
 
     const candidates =
       this.state.races.length === 0
         ? null
         : positions.map(can => {
-            let found = this.state.races.find(pos => pos.PositionName === can);
+            let found = this.state.races.find(pos => pos.positionName === can);
             return (
-              <div className='row' key={found.PositionName}>
+              <div className='row' key={found.positionName}>
                 <div className='col-12'>
                   <h2 key={found.numberNeeded}>
-                    <span className='candidateTitle'>{found.PositionName}</span>
+                    <span className='candidateTitle'>{found.positionName}</span>
                   </h2>
                   <CandidateSection
-                    key={found.PositionName}
-                    candidatePosition={found.PositionName}
+                    key={found.positionName}
+                    candidatePosition={found.positionName}
                     races={this.state.races}
                   />
                 </div>
@@ -236,7 +236,7 @@ class Candidates extends Component {
     const positionsSummary = [];
     this.state.races.forEach(race => {
       positionsSummary.push({
-        PositionName: race.PositionName,
+        positionName: race.positionName,
         numberNeeded: race.numberNeeded
       });
     });
@@ -260,9 +260,9 @@ class Candidates extends Component {
           <option value='desc'>Z to A</option>
         </select>
         <SectionHeader
-          title={candidatesHeader.StepTitle}
+          title={candidatesHeader.stepTitle}
           level='2'
-          description={candidatesHeader.StepDescription}
+          description={candidatesHeader.stepDescription}
         />
         {candidates}
         {this.renderModal()}
