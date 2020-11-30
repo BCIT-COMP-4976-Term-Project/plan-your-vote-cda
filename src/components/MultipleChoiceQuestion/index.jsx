@@ -7,10 +7,10 @@ const MultipleChoiceQuestion = ({
   values,
   radioFunction,
 }) => {
-  
-  const options = values.map(item => {
+
+  const options = values.map((item, index) => {
     return (
-      <div>
+      <div key={index}>
         <input
           type='radio'
           name={name}
