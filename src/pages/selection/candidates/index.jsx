@@ -123,7 +123,7 @@ class Candidates extends Component {
 
       return (
         <CandidateCard
-          key={candidate.candidateId}
+          key={candidate.CandidateId}
           candidate={candidate}
           displayModal={this.displayModal}
         />
