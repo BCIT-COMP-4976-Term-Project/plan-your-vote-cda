@@ -19,10 +19,12 @@ class Capital extends Component {
   componentDidMount() {
     this._isMounted = true;
     this.loadApiData().then(data => {
+
       if (this._isMounted) {
         const { StepTitle, StepDescription, StepNumber } = data.step;
+
         this.setState({
-          ballotIssues: data.ballotIssues.ballotIssues,
+          ballotIssues: data.ballotIssues.ballotIssues.reverse(),
           header: {
             StepTitle,
             StepDescription,
@@ -31,6 +33,7 @@ class Capital extends Component {
         });
       }
     });
+
   }
 
   componentWillUnmount() {
@@ -84,7 +87,7 @@ class Capital extends Component {
 
   render() {
 
-    const mcQ = this.state.ballotIssues.reverse().map(mcQuestions => {
+    const mcQ = this.state.ballotIssues.map(mcQuestions => {
       return (
         <MultipleChoiceQuestion
           key={mcQuestions.BallotIssueId}

@@ -19,7 +19,7 @@ const ICS = () => {
       >
         Date:
       </label>
-      {dateSelector(['2019-04-15', '2019-05-23', '2019-06-28'])}
+      {dateSelector(['2021-04-15', '2021-05-23', '2021-06-28'])}
       <div id='addtocalendar'>Add to Calendar</div>
       <button
         aria-label='Generating and downloading pdf summary of your plan. Remember to officially vote in person on election day.'
