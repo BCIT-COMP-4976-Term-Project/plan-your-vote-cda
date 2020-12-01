@@ -9,8 +9,8 @@ class Capital extends Component {
   _isMounted = false;
   state = {
     header: {
-      pageTitle: '',
-      pageDescription: ''
+      StepTitle: '',
+      StepDescription: ''
     },
     ballotIssues: [],
     selectedAnswers: []
@@ -20,13 +20,13 @@ class Capital extends Component {
     this._isMounted = true;
     this.loadApiData().then(data => {
       if (this._isMounted) {
-        const { stepTitle, stepDescription, stepNumber } = data.step;
+        const { StepTitle, StepDescription, StepNumber } = data.step;
         this.setState({
           ballotIssues: data.ballotIssues.ballotIssues,
           header: {
-            stepTitle,
-            stepDescription,
-            stepNumber
+            StepTitle,
+            StepDescription,
+            StepNumber
           }
         });
       }
@@ -102,9 +102,9 @@ class Capital extends Component {
         <div className='row'>
           <div className='col-md-12'>
             <SectionHeader
-              title={this.state.header.stepTitle}
+              title={this.state.header.StepTitle}
               level='2'
-              description={this.state.header.stepDescription}
+              description={this.state.header.StepDescription}
             />
           </div>
         </div>
