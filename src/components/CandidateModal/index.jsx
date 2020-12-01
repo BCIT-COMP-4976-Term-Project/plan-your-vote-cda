@@ -102,14 +102,14 @@ const CandidateModal = ({
       </div>
     );
   });
-
+console.log("test id ========================:", candidate)
   return (
     <div
       className='modal fade'
       id={`candidate-${candidate.candidateId}-modal`}
       tabIndex='-1'
       role='dialog'
-      aria-labelledby={`candidate-${candidate.CandidateId}-modal-label`}
+      aria-labelledby={`candidate-${candidate.candidateId}-modal-label`}
       aria-hidden='true'
     >
       <div
