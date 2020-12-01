@@ -160,17 +160,17 @@ class Candidates extends Component {
 
     if (e.target.value === 'ballot-order') {
       for (const race of races) {
-        race.candidates.sort((a, b) => {
+        race.Candidates.sort((a, b) => {
           return a.ballotOrder - b.ballotOrder;
         });
       }
     } else if (e.target.value === 'asc') {
       for (const race of races) {
-        race.candidates.sort(this.sortByNameAsc);
+        race.Candidates.sort(this.sortByNameAsc);
       }
     } else if (e.target.value === 'desc') {
       for (const race of races) {
-        race.candidates.sort(this.sortByNameDesc);
+        race.Candidates.sort(this.sortByNameDesc);
       }
     }
 
@@ -182,20 +182,20 @@ class Candidates extends Component {
   };
 
   sortByNameAsc = (a, b) => {
-    if (a.name < b.name) {
+    if (a.Name < b.Name) {
       return -1;
     }
-    if (a.name > b.name) {
+    if (a.Name > b.Name) {
       return 1;
     }
     return 0;
   };
 
   sortByNameDesc = (a, b) => {
-    if (a.name < b.name) {
+    if (a.Name < b.Name) {
       return 1;
     }
-    if (a.name > b.name) {
+    if (a.Name > b.Name) {
       return -1;
     }
     return 0;
