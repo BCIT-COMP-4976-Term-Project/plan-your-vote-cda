@@ -19,12 +19,12 @@ class Schedule extends Component {
     },
     allPollingPlaces: [
       {
-        pollingPlaceId: 0,
-        address: null,
-        pollingPlaceName: null,
-        pollingStationName: null,
-        advanceOnly: false,
-        localArea: null,
+        PollingPlaceId: 0,
+        Address: null,
+        PollingPlaceName: null,
+        PollingStationName: null,
+        AdvanceOnly: false,
+        LocalArea: null,
         pollingPlaceDates: [
           {
             startTime: null,
@@ -34,8 +34,8 @@ class Schedule extends Component {
         ],
         parkingInfo: null,
         wheelchairInfo: null,
-        email: null,
-        phone: null,
+        Email: null,
+        Phone: null,
         latitude: 0,
         longitude: 0
       }
@@ -49,10 +49,10 @@ class Schedule extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this.initializeUserCoordinates();
+    this.loadPollingHeader();
     this.loadPollingPlaces();
     this.loadDistance();
-    this.loadPollingHeader();
+    this.initializeUserCoordinates();
   }
 
   componentDidUpdate() {
@@ -81,25 +81,23 @@ class Schedule extends Component {
     const selectedStationCopy = selectedStation.slice(0);
 
     const found = selectedStation.findIndex(
-      station => station.pollingPlaceId === data.pollingPlaceID
+      station => station.PollingPlaceId === data.PollingPlaceId
     );
-    // console.log(data)
-    // console.log(selectedStation)
 
     const temp = {
-      pollingPlaceId: data.pollingPlaceId,
-      pollingPlaceName: data.pollingPlaceName,
-      address: data.address,
-      pollingStationName: data.pollingStationName,
-      parkingInfo: data.parkingInfo,
-      wheelchairInfo: data.wheelchairInfo,
-      advanceOnly: data.advanceOnly,
-      localArea: data.localArea,
-      phone: data.phone,
-      email: data.email,
-      latitude: data.latitude,
-      longitude: data.longitude,
-      pollingPlaceDates: data.pollingPlaceDates
+      PollingPlaceId: data.PollingPlaceId,
+      PollingPlaceName: data.PollingPlaceName,
+      Address: data.Address,
+      PollingStationName: data.PollingStationName,
+      ParkingInfo: data.ParkingInfo,
+      WheelchairInfo: data.WheelchairInfo,
+      AdvanceOnly: data.AdvanceOnly,
+      LocalArea: data.LocalArea,
+      Phone: data.Phone,
+      Email: data.Email,
+      latitude: data.Latitude,
+      longitude: data.Longitude,
+      pollingPlaceDates: data.PollingPlaceDates
     };
 
     if (selectedStation.length !== 0) {
@@ -122,8 +120,8 @@ class Schedule extends Component {
       if (this._isMounted) {
         this.setState({
           page: {
-            title: response.data.stepTitle,
-            description: response.data.stepDescription
+            title: response.data.StepTitle,
+            description: response.data.StepDescription
           }
         });
       }
@@ -135,10 +133,10 @@ class Schedule extends Component {
       if (this._isMounted) {
         this.setState({
           page: {
-            title: response.data.votingPage.pageTitle,
-            description: response.data.votingPage.pageDescription
+            title: response.data.votingPage.PageTitle,
+            description: response.data.votingPage.PageDescription
           },
-          allPollingPlaces: response.data.pollingPlaces
+          allPollingPlaces: response.data.PollingPlaces
         });
       }
     });
@@ -168,7 +166,7 @@ class Schedule extends Component {
 
     distances.map(distance => {
       const place = this.state.allPollingPlaces.find(pollingPlace => {
-        return pollingPlace.pollingPlaceId === distance.pollingPlaceID;
+        return pollingPlace.PollingPlaceId === distance.PollingPlaceId;
       });
 
       if (place) {
@@ -202,7 +200,7 @@ class Schedule extends Component {
   render() {
     const details = this.state.closePollingPlaces.map(pollingPlace => {
       return (
-        <li className='list-group-item' key={pollingPlace.pollingPlaceId}>
+        <li className='list-group-item' key={pollingPlace.PollingPlaceId}>
           <Details
             pollingPlace={pollingPlace}
             selectFunction={this.selectStation}

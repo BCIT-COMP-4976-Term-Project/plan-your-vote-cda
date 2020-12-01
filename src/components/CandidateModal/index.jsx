@@ -25,25 +25,26 @@ const CandidateModal = ({
     return priority.Text;
   };
 
-  const contactMethodList = [
+  const ContactMethodList = [
     'Phone',
     'Email',
-    'Website',
     'Twitter',
     'Facebook',
     'Instagram',
+    '',
     'Youtube',
+    'Website',
     'Other'
   ];
 
-  const displayContact = contactMethodList.map(cmItem => {
-    let contactMethod = ``;
+  const displayContact = ContactMethodList.filter(index => index !== '').map(cmItem => {
+    let ContactMethod = ``;
     let key = `${cmItem}`;
     const found = candidate.Contacts.find(
-      contact => contact.ContactMethod === cmItem
+      contact => ContactMethodList[contact.ContactMethod] === cmItem,
     );
     if (found) {
-      if (found.ContactMethod === 'Instagram') {
+      if (ContactMethodList[found.ContactMethod] === 'Instagram') {
         let splitURL = found.ContactValue.split('/');
         let contactHandle = splitURL[splitURL.length - 1];
 
@@ -51,54 +52,54 @@ const CandidateModal = ({
           contactHandle = splitURL[splitURL.length - 2];
         }
 
-        contactMethod += `@${contactHandle}`;
-        contactMethod = <a href={found.ContactValue}> {contactMethod}</a>;
+        ContactMethod += `@${contactHandle}`;
+        ContactMethod = <a href={found.ContactValue}> {ContactMethod}</a>;
       }
 
-      if (found.ContactMethod === 'Twitter') {
+      if (ContactMethodList[found.ContactMethod] === 'Twitter') {
         let splitURL = found.ContactValue.split('/');
         let contactHandle = splitURL[splitURL.length - 1];
-        contactMethod += `@${contactHandle}`;
-        contactMethod = <a href={found.ContactValue}> {contactMethod}</a>;
+        ContactMethod += `@${contactHandle}`;
+        ContactMethod = <a href={found.ContactValue}> {ContactMethod}</a>;
       }
 
-      if (found.contactMethod === 'Email') {
-        contactMethod += found.ContactValue;
-        contactMethod = (
-          <a href={`mailto: ${contactMethod}`}> {contactMethod}</a>
+      if (ContactMethodList[found.ContactMethod] === 'Email') {
+        ContactMethod += found.ContactValue;
+        ContactMethod = (
+          <a href={`mailto: ${ContactMethod}`}> {ContactMethod}</a>
         );
       }
 
       if (
-        found.ContactMethod === 'Website' ||
-        found.ContactMethod === 'Facebook' ||
-        found.ContactMethod === 'Youtube' ||
-        found.ContactMethod === 'Other'
+        ContactMethodList[found.ContactMethod] === 'Website' ||
+        ContactMethodList[found.ContactMethod] === 'Facebook' ||
+        ContactMethodList[found.ContactMethod] === 'Youtube' ||
+        ContactMethodList[found.ContactMethod] === 'Other'
       ) {
-        contactMethod += found.contactValue;
-        let splitURL = contactMethod.split('');
+        ContactMethod += found.ContactValue;
+        let splitURL = ContactMethod.split('');
         if (
           splitURL[0] !== 'h' ||
           splitURL[1] !== 't' ||
           splitURL[2] !== 't' ||
           splitURL[3] !== 'p'
         ) {
-          contactMethod = `https://${contactMethod}`;
+          ContactMethod = `https://${ContactMethod}`;
         }
 
-        contactMethod = <a href={contactMethod}> {contactMethod}</a>;
+        ContactMethod = <a href={ContactMethod}> {ContactMethod}</a>;
       }
 
-      if (found.ContactMethod === 'Phone') {
-        contactMethod += found.ContactValue;
+      if (ContactMethodList[found.ContactMethod] === 'Phone') {
+        ContactMethod += found.ContactValue;
       }
     } else {
-      contactMethod += 'Not Provided';
+      ContactMethod += 'Not Provided';
     }
 
     return (
       <div key={key}>
-        <span className='modalTitles'>{key}:</span> {contactMethod}
+         <span className='modalTitles'>{key}:</span> {ContactMethod}
       </div>
     );
   });
