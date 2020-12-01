@@ -58,7 +58,6 @@ class Review extends Component {
     const racesSummary = [];
 
     races.forEach(race => {
-
       racesSummary.push({
         positionName: race.PositionName,
         numberNeeded: race.NumberNeeded
@@ -78,8 +77,7 @@ class Review extends Component {
       if (!candidate) {
         return null;
       }
-
-      if (candidate.candidatePosition === race) {
+      if (candidate.CandidatePosition === race) {
         return (
           <CandidateCard
             key={candidate.CandidateId}
@@ -132,9 +130,8 @@ class Review extends Component {
     if (!storage) {
       return count;
     }
-
     for (let i = 0; i < storage.length; i++) {
-      if (storage[i].candidatePosition === positionName) {
+      if (storage[i].CandidatePosition === positionName) {
         count += 1;
       }
     }
@@ -152,9 +149,9 @@ class Review extends Component {
 
       return (
         <ReviewQuestions
-          key={mcQuestions.ballotIssueID}
-          title={mcQuestions.ballotIssueTitle}
-          answer={mcQuestions.ballotIssueAnswer}
+          key={mcQuestions.BallotIssueID}
+          title={mcQuestions.BallotIssueTitle}
+          answer={mcQuestions.BallotIssueAnswer}
           description={mcQuestions.ballotIssueDescription}
         />
       );
@@ -193,7 +190,6 @@ class Review extends Component {
           </h3>
         </div>
         {this.state.racesSummary.map(race => {
-
           return (
             <div className='row' key={race.positionName}>
               {this.candidatesSummary(race.positionName, race.numberNeeded)}
