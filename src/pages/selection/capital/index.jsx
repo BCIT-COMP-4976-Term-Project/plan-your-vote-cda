@@ -92,7 +92,7 @@ class Capital extends Component {
         <MultipleChoiceQuestion
           key={mcQuestions.BallotIssueId}
           title={mcQuestions.BallotIssueTitle}
-          description={mcQuestions.description}
+          description={mcQuestions.Description}
           name={mcQuestions.BallotIssueId}
           values={mcQuestions.BallotIssueOptions}
           radioFunction={this.radioBtn}

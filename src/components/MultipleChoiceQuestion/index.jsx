@@ -16,13 +16,13 @@ const MultipleChoiceQuestion = ({
           name={name}
           onChange={radioFunction(
             name,
-            item.issueOptionInfo,
+            item.IssueOptionInfo,
             title,
             description
           )}
-          value={item.issueOptionInfo}
+          value={item.IssueOptionInfo}
         />
-        {item.issueOptionInfo}
+        {item.IssueOptionInfo}
       </div>
     );
   });
