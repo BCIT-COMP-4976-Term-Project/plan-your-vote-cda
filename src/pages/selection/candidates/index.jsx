@@ -14,8 +14,8 @@ class Candidates extends Component {
   state = {
     races: [],
     candidatesHeader: {
-      stepTitle: '',
-      stepDescription: ''
+      StepTitle: '',
+      StepDescription: ''
     },
     selectedCandidates: [],
     currentCard: {
@@ -160,17 +160,17 @@ class Candidates extends Component {
 
     if (e.target.value === 'ballot-order') {
       for (const race of races) {
-        race.candidates.sort((a, b) => {
-          return a.ballotOrder - b.ballotOrder;
+        race.Candidates.sort((a, b) => {
+          return a.BallotOrder - b.BallotOrder;
         });
       }
     } else if (e.target.value === 'asc') {
       for (const race of races) {
-        race.candidates.sort(this.sortByNameAsc);
+        race.Candidates.sort(this.sortByNameAsc);
       }
     } else if (e.target.value === 'desc') {
       for (const race of races) {
-        race.candidates.sort(this.sortByNameDesc);
+        race.Candidates.sort(this.sortByNameDesc);
       }
     }
 
@@ -207,23 +207,23 @@ class Candidates extends Component {
 
     const positions = [];
     this.state.races.forEach(race => {
-      positions.push(race.positionName);
+      positions.push(race.PositionName);
     });
 
     const candidates =
       this.state.races.length === 0
         ? null
         : positions.map(can => {
-            let found = this.state.races.find(pos => pos.positionName === can);
+            let found = this.state.races.find(pos => pos.PositionName === can);
             return (
-              <div className='row' key={found.positionName}>
+              <div className='row' key={found.PositionName}>
                 <div className='col-12'>
-                  <h2 key={found.numberNeeded}>
-                    <span className='candidateTitle'>{found.positionName}</span>
+                  <h2 key={found.Numberneeded}>
+                    <span className='candidateTitle'>{found.PositionName}</span>
                   </h2>
                   <CandidateSection
-                    key={found.positionName}
-                    candidatePosition={found.positionName}
+                    key={found.PositionName}
+                    candidatePosition={found.PositionName}
                     races={this.state.races}
                   />
                 </div>
@@ -236,8 +236,8 @@ class Candidates extends Component {
     const positionsSummary = [];
     this.state.races.forEach(race => {
       positionsSummary.push({
-        positionName: race.positionName,
-        numberNeeded: race.numberNeeded
+        PositionName: race.PositionName,
+        Numberneeded: race.Numberneeded
       });
     });
 
@@ -260,9 +260,9 @@ class Candidates extends Component {
           <option value='desc'>Z to A</option>
         </select>
         <SectionHeader
-          title={candidatesHeader.stepTitle}
+          title={candidatesHeader.StepTitle}
           level='2'
-          description={candidatesHeader.stepDescription}
+          description={candidatesHeader.StepDescription}
         />
         {candidates}
         {this.renderModal()}
