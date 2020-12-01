@@ -85,34 +85,34 @@ const Details = ({ pollingPlace, selectFunction, selectedStation }) => {
 
   return (
     <div>
-      {title(pollingPlace.pollingPlaceName, pollingPlace.pollingStationName)}
+      {title(pollingPlace.PollingPlaceName, pollingPlace.PollingStationName)}
       <ul className='fa-ul'>
-        {location(pollingPlace.address, pollingPlace.localArea)}
+        {location(pollingPlace.Address, pollingPlace.LocalArea)}
         {!isNaN(pollingPlace.distance)
           ? listElement(
               'fas fa-route',
               `${(pollingPlace.distance / 1000).toFixed(2)} km away`
             )
           : null}
-        {listElement('far fa-check-circle', pollingPlace.advanceOnly)}
+        {listElement('far fa-check-circle', pollingPlace.AdvanceOnly)}
         <li>
           <span className='fa-li'>
             <i className='far fa-clock' />
           </span>
           Voting Hours:
-          <ul>{pollingDates(pollingPlace.pollingPlaceDates)}</ul>
+          <ul>{pollingDates(pollingPlace.PollingPlaceDates)}</ul>
         </li>
-        {listElement('fab fa-accessible-icon', pollingPlace.wheelchairInfo)}
-        {listElement('fas fa-parking', pollingPlace.parkingInfo)}
-        {listElement('fas fa-phone', pollingPlace.phone)}
-        {listElement('fas fa-envelope', pollingPlace.email)}
+        {listElement('fab fa-accessible-icon', pollingPlace.WheelchairInfo)}
+        {listElement('fas fa-parking', pollingPlace.ParkingInfo)}
+        {listElement('fas fa-phone', pollingPlace.Phone)}
+        {listElement('fas fa-envelope', pollingPlace.Email)}
       </ul>
       <br />
       <button className ='btn btn-info' onClick={selectFunction(pollingPlace)}>
         {selectedStation.length === 0
           ? 'SELECT'
           : selectedStation.findIndex(
-              station => station.pollingPlaceId === pollingPlace.pollingPlaceId
+              station => station.pollingPlaceId === pollingPlace.PollingPlaceId
             ) >= 0
           ? 'REMOVE'
           : 'SELECT'}
