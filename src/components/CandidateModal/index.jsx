@@ -103,7 +103,7 @@ const CandidateModal = ({
       </div>
     );
   });
-console.log("test id ========================:", candidate)
+
   return (
     <div
       className='modal fade'
