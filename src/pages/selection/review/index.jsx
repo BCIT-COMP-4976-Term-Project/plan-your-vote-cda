@@ -130,7 +130,6 @@ class Review extends Component {
     if (!storage) {
       return count;
     }
-    console.log("storage", storage)
     for (let i = 0; i < storage.length; i++) {
       if (storage[i].CandidatePosition === positionName) {
         count += 1;
