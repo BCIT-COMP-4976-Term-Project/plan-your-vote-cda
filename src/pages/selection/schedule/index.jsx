@@ -133,10 +133,10 @@ class Schedule extends Component {
       if (this._isMounted) {
         this.setState({
           page: {
-            title: response.data.votingPage.pageTitle,
-            description: response.data.votingPage.pageDescription
+            title: response.data.votingPage.PageTitle,
+            description: response.data.votingPage.PageDescription
           },
-          allPollingPlaces: response.data.pollingPlaces
+          allPollingPlaces: response.data.PollingPlaces
         });
       }
     });

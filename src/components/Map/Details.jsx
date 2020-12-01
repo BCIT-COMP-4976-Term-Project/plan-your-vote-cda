@@ -58,12 +58,12 @@ const Details = ({ pollingPlace, selectFunction, selectedStation }) => {
     return pollingDates.map(pollingDate => {
       return (
         <li key={JSON.stringify(pollingDate)}>
-          {new Date(pollingDate.pollingDate).toLocaleString(undefined, {
+          {new Date(pollingDate.PollingDate).toLocaleString(undefined, {
             month: 'long',
             day: 'numeric'
           })}
           {': '}
-          {parseTime(pollingDate.startTime, pollingDate.endTime)}
+          {parseTime(pollingDate.StartTime, pollingDate.EndTime)}
         </li>
       );
     });
