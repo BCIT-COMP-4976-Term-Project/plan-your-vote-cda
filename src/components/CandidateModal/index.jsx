@@ -106,7 +106,7 @@ const CandidateModal = ({
   return (
     <div
       className='modal fade'
-      id={`candidate-${candidate.candidateId}-modal`}
+      id={`candidate-${candidate.CandidateId}-modal`}
       tabIndex='-1'
       role='dialog'
       aria-labelledby={`candidate-${candidate.CandidateId}-modal-label`}
@@ -123,7 +123,7 @@ const CandidateModal = ({
                 className='modal-title'
                 id={`candidate-${candidate.CandidateId}-modal-label`}
               >
-                {candidate.name}
+                {candidate.Name}
                 <br />
                 <span className='card-subtitle mb-2 text-muted'>
                   {candidate.OrganizationName}
@@ -144,7 +144,7 @@ const CandidateModal = ({
               <img
                 src={`${CMS_BASE_URL}/${candidate.Picture}`}
                 className='card-img-top'
-                alt={candidate.name}
+                alt={candidate.Name}
               />
               <button
                 type='button'
