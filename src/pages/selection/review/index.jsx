@@ -146,12 +146,11 @@ class Review extends Component {
     }
 
     return data.map(mcQuestions => {
-
       return (
         <ReviewQuestions
-          key={mcQuestions.BallotIssueID}
-          title={mcQuestions.BallotIssueTitle}
-          answer={mcQuestions.BallotIssueAnswer}
+          key={mcQuestions.ballotIssueID}
+          title={mcQuestions.ballotIssueTitle}
+          answer={mcQuestions.ballotIssueAnswer}
           description={mcQuestions.ballotIssueDescription}
         />
       );
