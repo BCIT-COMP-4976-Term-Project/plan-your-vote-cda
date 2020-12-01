@@ -83,8 +83,8 @@ class Capital extends Component {
   };
 
   render() {
-    console.log("test ============ :",this.state.ballotIssues)
-    const mcQ = this.state.ballotIssues.map(mcQuestions => {
+
+    const mcQ = this.state.ballotIssues.reverse().map(mcQuestions => {
       return (
         <MultipleChoiceQuestion
           key={mcQuestions.BallotIssueId}
