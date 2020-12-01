@@ -161,7 +161,7 @@ class Candidates extends Component {
     if (e.target.value === 'ballot-order') {
       for (const race of races) {
         race.Candidates.sort((a, b) => {
-          return a.ballotOrder - b.ballotOrder;
+          return a.BallotOrder - b.BallotOrder;
         });
       }
     } else if (e.target.value === 'asc') {
