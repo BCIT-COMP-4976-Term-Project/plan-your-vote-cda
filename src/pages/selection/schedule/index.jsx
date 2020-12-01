@@ -49,10 +49,10 @@ class Schedule extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this.initializeUserCoordinates();
+    this.loadPollingHeader();
     this.loadPollingPlaces();
     this.loadDistance();
-    this.loadPollingHeader();
+    this.initializeUserCoordinates();
   }
 
   componentDidUpdate() {
@@ -83,8 +83,6 @@ class Schedule extends Component {
     const found = selectedStation.findIndex(
       station => station.pollingPlaceId === data.pollingPlaceID
     );
-    // console.log(data)
-    // console.log(selectedStation)
 
     const temp = {
       pollingPlaceId: data.pollingPlaceId,
@@ -122,8 +120,8 @@ class Schedule extends Component {
       if (this._isMounted) {
         this.setState({
           page: {
-            title: response.data.stepTitle,
-            description: response.data.stepDescription
+            title: response.data.StepTitle,
+            description: response.data.StepDescription
           }
         });
       }

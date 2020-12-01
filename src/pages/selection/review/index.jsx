@@ -23,8 +23,8 @@ class Review extends Component {
       const racesSummary = this.summarizeCandidates(response.races.races);
       if (this._isMounted) {
         this.setState({
-          pageTitle: response.step.stepTitle,
-          pageDescription: response.step.stepDescription,
+          pageTitle: response.step.StepTitle,
+          pageDescription: response.step.StepDescription,
           ballotIssues: response.ballotIssues.ballotIssues,
           racesSummary,
           candidatesSelected: JSON.parse(
@@ -47,10 +47,9 @@ class Review extends Component {
 
     const data = {
       ballotIssues: ballotIssues.data,
-      step: steps.data[3],
+      step: steps.data[0],
       races: races.data
     };
-
     return data;
   };
 
