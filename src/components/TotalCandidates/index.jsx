@@ -7,17 +7,17 @@ const CandidatesTally = ({ candidateJSON, positions }) => {
 
   candidateJSON.forEach(candidate => {
     const position = positions.find(position => {
-      return position.positionName === candidate.candidatePosition;
+      return position.PositionName === candidate.CandidatePosition;
     });
     position.count++;
   });
 
   const summary = positions.map(position => {
     return (
-      <tr key={position.positionName}>
-        <th>{position.positionName}</th>
+      <tr key={position.PositionName}>
+        <th>{position.PositionName}</th>
         <th>
-          {position.count} of {position.numberNeeded}
+          {position.count} of {position.NumberNeeded}
         </th>
       </tr>
     );

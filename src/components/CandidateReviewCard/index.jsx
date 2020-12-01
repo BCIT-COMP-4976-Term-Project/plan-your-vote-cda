@@ -7,17 +7,17 @@ const CandidateCard = ({ candidate, remove }) => {
       <div
         className='card'
         data-toggle='modal'
-        data-target={`#candidate-${candidate.candidateId}-modal`}
+        data-target={`#candidate-${candidate.CandidateId}-modal`}
       >
         <img
-          src={`${CMS_BASE_URL}/${candidate.picture}`}
+          src={`${CMS_BASE_URL}/${candidate.Picture}`}
           className='card-img-top'
-          alt={candidate.name}
+          alt={candidate.Name}
         />
         <div className='card-body'>
-          <h5 className='card-title'>{candidate.name}</h5>
+          <h5 className='card-title'>{candidate.Name}</h5>
           <h6 className='card-subtitle mb-2 text-muted'>
-            {candidate.organizationName}
+            {candidate.OrganizationName}
           </h6>
           <button className='btn' onClick={() => remove(candidate)}>
             Remove
