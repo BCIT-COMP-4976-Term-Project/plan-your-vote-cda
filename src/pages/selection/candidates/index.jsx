@@ -7,6 +7,7 @@ import pyv from 'apis/pyv';
 import { Link } from 'react-router-dom';
 import * as routes from 'constants/routes';
 import CandidatesCount from 'components/TotalCandidates';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Candidates extends Component {
   _isMounted = false;
@@ -204,6 +205,7 @@ class Candidates extends Component {
   render() {
     const { candidatesHeader } = this.state;
     const { selectedCandidates } = this.state;
+    const {races} = this.state;
 
     const positions = [];
     this.state.races.forEach(race => {
@@ -243,35 +245,56 @@ class Candidates extends Component {
 
     return (
       <div className='container'>
-        <div className='canTable'>
-          <CandidatesCount
-            candidateJSON={selectedCandidates}
-            positions={positionsSummary}
-          />
+        {races === []
+        ?(
+           <>
+           <Spinner animation="grow" variant="primary" />
+           <Spinner animation="grow" variant="secondary" />
+           <Spinner animation="grow" variant="success" />
+           <Spinner animation="grow" variant="danger" />
+           <Spinner animation="grow" variant="warning" />
+           <Spinner animation="grow" variant="info" />
+           <Spinner animation="grow" variant="light" />
+           <Spinner animation="grow" variant="dark" />
+           </>
+        )
+        :(
+        <div>
+              <div className='canTable'>
+                <CandidatesCount
+                  candidateJSON={selectedCandidates}
+                  positions={positionsSummary}
+                />
+              </div>
+
+              <select
+                className='custom-select mb-3'
+                onChange={this.sortCandidates}
+                value={this.state.sortOption}
+              >
+                <option value='ballot-order'>Ballot Order</option>
+                <option value='asc'>A to Z</option>
+                <option value='desc'>Z to A</option>
+              </select>
+              <SectionHeader
+                title={candidatesHeader.StepTitle}
+                level='2'
+                description={candidatesHeader.StepDescription}
+              />
+              {candidates}
+              {this.renderModal()}
+              <br />
+              <Link to={routes.CAPITAL} className='btn btn-secondary  nextBtn'>
+                NEXT
+              </Link>
+              <br />
+              <br />
         </div>
 
-        <select
-          className='custom-select mb-3'
-          onChange={this.sortCandidates}
-          value={this.state.sortOption}
-        >
-          <option value='ballot-order'>Ballot Order</option>
-          <option value='asc'>A to Z</option>
-          <option value='desc'>Z to A</option>
-        </select>
-        <SectionHeader
-          title={candidatesHeader.StepTitle}
-          level='2'
-          description={candidatesHeader.StepDescription}
-        />
-        {candidates}
-        {this.renderModal()}
-        <br />
-        <Link to={routes.CAPITAL} className='btn btn-secondary  nextBtn'>
-          NEXT
-        </Link>
-        <br />
-        <br />
+
+
+        )}
+
       </div>
     );
   }

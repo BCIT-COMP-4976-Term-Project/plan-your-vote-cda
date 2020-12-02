@@ -7,6 +7,7 @@ import pyv from 'apis/pyv';
 import CandidateCard from 'components/CandidateReviewCard';
 import ReviewVoteCard from 'components/ReviewVoteCard';
 import ReviewQuestions from 'components/ReviewQuestions';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Review extends Component {
   state = {
@@ -14,7 +15,8 @@ class Review extends Component {
     pageDescription: null,
     ballotIssues: [],
     candidatesSelected: [],
-    racesSummary: []
+    racesSummary: [],
+    loading: true
   };
 
   componentDidMount() {
@@ -30,7 +32,8 @@ class Review extends Component {
           candidatesSelected: JSON.parse(
             sessionStorage.getItem('selectedCandidateRaces')
           ),
-          pollDetails: JSON.parse(sessionStorage.getItem('pollingPlace'))
+          pollDetails: JSON.parse(sessionStorage.getItem('pollingPlace')),
+          loading : false
         });
       }
     });
@@ -188,6 +191,22 @@ class Review extends Component {
             YOUR CANDIDATES IN BALLOT ORDER:
           </h3>
         </div>
+        {this.state.loading
+        ?(
+          <>
+           <Spinner animation="grow" variant="primary" />
+           <Spinner animation="grow" variant="secondary" />
+           <Spinner animation="grow" variant="success" />
+           <Spinner animation="grow" variant="danger" />
+           <Spinner animation="grow" variant="warning" />
+           <Spinner animation="grow" variant="info" />
+           <Spinner animation="grow" variant="light" />
+           <Spinner animation="grow" variant="dark" />
+           </>
+
+        ):(
+          <div></div>
+        )}
         {this.state.racesSummary.map(race => {
           return (
             <div className='row' key={race.positionName}>
