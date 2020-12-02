@@ -246,7 +246,7 @@ class Candidates extends Component {
     });
 
     return (
-      <div className='container'>
+      <div >
         {loading
         ?(
            <>
@@ -260,8 +260,9 @@ class Candidates extends Component {
            <Spinner animation="grow" variant="dark" />
            </>
         )
-        :(
-        <div>
+        :
+        (
+        <div className='container'>
               <div className='canTable'>
                 <CandidatesCount
                   candidateJSON={selectedCandidates}
