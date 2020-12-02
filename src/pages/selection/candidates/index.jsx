@@ -37,7 +37,8 @@ class Candidates extends Component {
         }
       ]
     },
-    sortOption: ''
+    sortOption: '',
+    loading: true
   };
 
   componentDidMount() {
@@ -51,7 +52,8 @@ class Candidates extends Component {
             StepTitle,
             StepDescription,
             StepNumber
-          }
+          },
+          loading: false
         });
       }
     });
@@ -205,7 +207,7 @@ class Candidates extends Component {
   render() {
     const { candidatesHeader } = this.state;
     const { selectedCandidates } = this.state;
-    const {races} = this.state;
+    const {loading} = this.state;
 
     const positions = [];
     this.state.races.forEach(race => {
@@ -245,7 +247,7 @@ class Candidates extends Component {
 
     return (
       <div className='container'>
-        {races === []
+        {loading
         ?(
            <>
            <Spinner animation="grow" variant="primary" />
